@@ -6,6 +6,17 @@ const handleErrors = require('./middlewares/handleErrors');
 var cors = require('cors');
 var app = express();
 
+// Dans notre application, nous respectons le design pattern MVC (MODEL-VIEW-CONTROLLER) 
+// voici la description des modules
+// - module db.js = connexion db mysql
+// - person.model.js = represente le DAO (DATA ACCESS OBJECT), appel du module db.js pr la co db
+// - person.controller.js = represente la classe recevant les requetes et renvoyant donc reponses, pour que ca
+// marche nous appellerons le module person.model.js
+// - person.router.js = represente la classe de routing attribuant des chemins aux méthodes déclarées et initilisées
+// dans person.controller.js
+// - Mise en place d'un middleware HandleErrors de traitement d'erreurs (appel de la classe ../utils/errors.js)
+// et declaration du middleware dans index.js
+
 // CORS est un raccourci pour le partage de ressources inter-origines. 
 // Il s'agit d'un mécanisme permettant d'autoriser ou de restreindre les 
 // ressources demandées sur un serveur Web en fonction de l'endroit où la 
